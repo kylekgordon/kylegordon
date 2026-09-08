@@ -1,0 +1,1060 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Kyle Gordon — Technology Educator, IT Professional, STEM Advocate, and Creative Technologist.">
+  <meta name="author" content="Kyle Gordon">
+  <meta name="theme-color" content="#6d28d9">
+  <title>Kyle Gordon | Technology Educator & IT Professional</title>
+
+  <style>
+    :root {
+      --bg: #09070f;
+      --bg-soft: #110d1b;
+      --surface: #171123;
+      --surface-2: #211833;
+      --purple: #8b5cf6;
+      --purple-light: #c4b5fd;
+      --white: #f8f7ff;
+      --muted: #b7afc8;
+      --border: rgba(196, 181, 253, .16);
+      --shadow: 0 20px 60px rgba(0,0,0,.35);
+      --max: 1120px;
+    }
+
+    * { box-sizing: border-box; }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+        "Segoe UI", sans-serif;
+      color: var(--white);
+      background:
+        radial-gradient(circle at 15% 10%, rgba(139,92,246,.18), transparent 28rem),
+        radial-gradient(circle at 85% 25%, rgba(109,40,217,.13), transparent 25rem),
+        var(--bg);
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(calc(100% - 40px), var(--max));
+      margin-inline: auto;
+    }
+
+    /* NAVIGATION */
+    nav {
+      position: fixed;
+      z-index: 1000;
+      top: 0;
+      width: 100%;
+      background: rgba(9,7,15,.72);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid transparent;
+      transition: .25s ease;
+    }
+
+    nav.scrolled {
+      border-bottom-color: var(--border);
+    }
+
+    .nav-inner {
+      min-height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .brand {
+      font-weight: 800;
+      letter-spacing: -.03em;
+      font-size: 1.1rem;
+    }
+
+    .brand span {
+      color: var(--purple-light);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 26px;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      color: var(--muted);
+      font-size: .92rem;
+    }
+
+    .nav-links a:hover {
+      color: var(--white);
+    }
+
+    .nav-button {
+      border: 1px solid var(--border);
+      padding: 9px 15px;
+      border-radius: 999px;
+      font-size: .9rem;
+    }
+
+    .nav-button:hover {
+      border-color: rgba(196,181,253,.4);
+      background: rgba(139,92,246,.1);
+    }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      padding: 130px 0 80px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.35fr .65fr;
+      align-items: center;
+      gap: 70px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      color: var(--purple-light);
+      text-transform: uppercase;
+      letter-spacing: .16em;
+      font-size: .75rem;
+      font-weight: 800;
+      margin-bottom: 18px;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 30px;
+      height: 2px;
+      background: var(--purple);
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(3.3rem, 8vw, 6.8rem);
+      line-height: .92;
+      letter-spacing: -.07em;
+      max-width: 850px;
+    }
+
+    .hero h1 span {
+      color: var(--purple-light);
+    }
+
+    .hero-lead {
+      color: var(--muted);
+      max-width: 690px;
+      font-size: clamp(1.05rem, 2vw, 1.3rem);
+      margin: 28px 0;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 30px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      padding: 13px 19px;
+      border-radius: 10px;
+      font-weight: 750;
+      border: 1px solid var(--border);
+      transition: transform .2s ease, background .2s ease, border-color .2s ease;
+    }
+
+    .button:hover {
+      transform: translateY(-2px);
+    }
+
+    .button.primary {
+      background: var(--purple);
+      border-color: var(--purple);
+      color: white;
+    }
+
+    .button.primary:hover {
+      background: #7c3aed;
+    }
+
+    .button.secondary:hover {
+      background: rgba(139,92,246,.1);
+      border-color: rgba(196,181,253,.35);
+    }
+
+    .hero-card {
+      min-height: 390px;
+      border: 1px solid var(--border);
+      border-radius: 30px;
+      background:
+        linear-gradient(145deg, rgba(139,92,246,.22), rgba(23,17,35,.72)),
+        var(--surface);
+      box-shadow: var(--shadow);
+      position: relative;
+      overflow: hidden;
+      display: grid;
+      place-items: center;
+    }
+
+    .hero-card::before {
+      content: "";
+      position: absolute;
+      width: 250px;
+      height: 250px;
+      border: 1px solid rgba(196,181,253,.22);
+      border-radius: 50%;
+    }
+
+    .initials {
+      width: 170px;
+      height: 170px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: rgba(9,7,15,.75);
+      border: 1px solid rgba(196,181,253,.28);
+      font-size: 4rem;
+      font-weight: 900;
+      letter-spacing: -.08em;
+      box-shadow: 0 0 80px rgba(139,92,246,.28);
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-card-label {
+      position: absolute;
+      bottom: 22px;
+      left: 24px;
+      right: 24px;
+      color: var(--muted);
+      font-size: .8rem;
+      text-transform: uppercase;
+      letter-spacing: .12em;
+    }
+
+    /* GENERAL SECTIONS */
+    section {
+      padding: 105px 0;
+      scroll-margin-top: 70px;
+    }
+
+    .section-heading {
+      margin-bottom: 48px;
+    }
+
+    .section-number {
+      color: var(--purple-light);
+      font-weight: 800;
+      font-size: .8rem;
+      letter-spacing: .14em;
+    }
+
+    h2 {
+      font-size: clamp(2.2rem, 5vw, 4rem);
+      letter-spacing: -.055em;
+      line-height: 1;
+      margin: 9px 0 0;
+    }
+
+    .intro {
+      max-width: 760px;
+      color: var(--muted);
+      font-size: 1.08rem;
+      margin-top: 18px;
+    }
+
+    /* ABOUT */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 22px;
+    }
+
+    .panel {
+      background: rgba(23,17,35,.72);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 30px;
+    }
+
+    .panel p {
+      color: var(--muted);
+      margin-top: 0;
+    }
+
+    .highlight {
+      border-left: 3px solid var(--purple);
+      padding-left: 18px;
+    }
+
+    /* EXPERIENCE */
+    .timeline {
+      position: relative;
+      display: grid;
+      gap: 18px;
+    }
+
+    .timeline-item {
+      display: grid;
+      grid-template-columns: 190px 1fr;
+      gap: 35px;
+      padding: 28px 0;
+      border-top: 1px solid var(--border);
+    }
+
+    .timeline-item:last-child {
+      border-bottom: 1px solid var(--border);
+    }
+
+    .date {
+      color: var(--purple-light);
+      font-weight: 750;
+      font-size: .9rem;
+    }
+
+    h3 {
+      margin: 0;
+      font-size: 1.35rem;
+      letter-spacing: -.025em;
+    }
+
+    .role-meta {
+      color: var(--muted);
+      margin: 4px 0 12px;
+    }
+
+    .timeline-item p {
+      color: var(--muted);
+      margin: 0;
+    }
+
+    /* EDUCATION / SKILLS */
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 22px;
+    }
+
+    .credential {
+      padding: 25px;
+      border: 1px solid var(--border);
+      background: rgba(23,17,35,.6);
+      border-radius: 18px;
+      margin-bottom: 14px;
+    }
+
+    .credential:last-child {
+      margin-bottom: 0;
+    }
+
+    .credential strong {
+      display: block;
+      font-size: 1.08rem;
+    }
+
+    .credential span {
+      color: var(--muted);
+      font-size: .92rem;
+    }
+
+    .skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .skill {
+      border: 1px solid var(--border);
+      background: rgba(139,92,246,.08);
+      color: #ddd6fe;
+      padding: 9px 13px;
+      border-radius: 999px;
+      font-size: .88rem;
+    }
+
+    /* PROJECTS */
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .project {
+      padding: 28px;
+      min-height: 230px;
+      border-radius: 20px;
+      border: 1px solid var(--border);
+      background: linear-gradient(145deg, rgba(139,92,246,.12), rgba(23,17,35,.65));
+      transition: transform .2s ease, border-color .2s ease;
+    }
+
+    .project:hover {
+      transform: translateY(-5px);
+      border-color: rgba(196,181,253,.35);
+    }
+
+    .project-icon {
+      font-size: 1.5rem;
+      margin-bottom: 28px;
+    }
+
+    .project p {
+      color: var(--muted);
+      font-size: .94rem;
+    }
+
+    /* LEADERSHIP */
+    .leadership {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+    }
+
+    .leadership-card {
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 28px;
+      background: var(--surface);
+    }
+
+    .leadership-card .number {
+      color: var(--purple);
+      font-weight: 900;
+      font-size: 2rem;
+    }
+
+    .leadership-card p {
+      color: var(--muted);
+    }
+
+    /* CONTACT */
+    .contact {
+      text-align: center;
+      padding-bottom: 80px;
+    }
+
+    .contact-box {
+      border: 1px solid var(--border);
+      border-radius: 28px;
+      padding: 65px 25px;
+      background:
+        radial-gradient(circle at center, rgba(139,92,246,.18), transparent 55%),
+        var(--surface);
+    }
+
+    .contact-box h2 {
+      max-width: 800px;
+      margin-inline: auto;
+    }
+
+    .contact-box p {
+      color: var(--muted);
+      max-width: 600px;
+      margin: 20px auto 30px;
+    }
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 28px 0;
+      color: var(--muted);
+      font-size: .85rem;
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    /* REVEAL */
+    .reveal {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity .65s ease, transform .65s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* MOBILE */
+    @media (max-width: 850px) {
+      .nav-links {
+        display: none;
+      }
+
+      .hero-grid,
+      .about-grid,
+      .two-col {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-card {
+        min-height: 260px;
+      }
+
+      .timeline-item {
+        grid-template-columns: 1fr;
+        gap: 7px;
+      }
+
+      .projects,
+      .leadership {
+        grid-template-columns: 1fr;
+      }
+
+      section {
+        padding: 80px 0;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .container {
+        width: min(calc(100% - 28px), var(--max));
+      }
+
+      .hero {
+        padding-top: 110px;
+      }
+
+      h1 {
+        font-size: 3.4rem;
+      }
+
+      .hero-actions .button {
+        width: 100%;
+      }
+
+      .panel,
+      .project,
+      .leadership-card {
+        padding: 23px;
+      }
+    }
+
+    @media print {
+      nav, .hero-actions, .contact, footer {
+        display: none;
+      }
+
+      body {
+        background: white;
+        color: black;
+      }
+
+      section {
+        padding: 35px 0;
+      }
+
+      .panel, .credential, .project, .leadership-card {
+        border-color: #ddd;
+        background: white;
+      }
+
+      .muted, .intro, .timeline-item p, .credential span, .project p,
+      .leadership-card p, .panel p {
+        color: #444 !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <nav id="nav">
+    <div class="container nav-inner">
+      <a class="brand" href="#top">KYLE<span>GORDON</span></a>
+
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#education">Education</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+      </ul>
+
+      <a class="nav-button" href="#contact">Contact</a>
+    </div>
+  </nav>
+
+  <main id="top">
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="reveal">
+          <div class="eyebrow">Technology • Education • Innovation</div>
+
+          <h1>
+            Kyle<br>
+            <span>Gordon.</span>
+          </h1>
+
+          <p class="hero-lead">
+            Technology educator, IT professional, STEM advocate, and creative technologist
+            helping people turn ideas into practical solutions.
+          </p>
+
+          <div class="hero-actions">
+            <a class="button primary" href="#experience">View Resume</a>
+            <a class="button secondary" href="#contact">Let's Connect</a>
+          </div>
+        </div>
+
+        <div class="hero-card reveal" aria-label="Kyle Gordon profile placeholder">
+          <div class="initials">KG</div>
+          <div class="hero-card-label">Technology Educator & Creative Technologist</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about">
+      <div class="container">
+        <div class="section-heading reveal">
+          <div class="section-number">01 / ABOUT</div>
+          <h2>Building, teaching,<br>and creating.</h2>
+        </div>
+
+        <div class="about-grid">
+          <div class="panel highlight reveal">
+            <p>
+              Kyle Gordon is a technology educator and IT professional with a background
+              spanning mechanical engineering, computer science, education, digital media,
+              and technology development.
+            </p>
+
+            <p>
+              His work centers on helping students and organizations understand technology
+              not simply as a tool, but as a platform for creativity, problem-solving,
+              entrepreneurship, and innovation.
+            </p>
+          </div>
+
+          <div class="panel reveal">
+            <p>
+              With experience in education, technology, creative production, STEM, and
+              digital design, Kyle brings an interdisciplinary approach to projects.
+            </p>
+
+            <p>
+              Outside of the classroom and professional work, his interests include music
+              production, guitar, photography, video production, drones, RC technology,
+              3D design, 3D printing, and stargazing.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- EXPERIENCE -->
+    <section id="experience">
+      <div class="container">
+        <div class="section-heading reveal">
+          <div class="section-number">02 / EXPERIENCE</div>
+          <h2>Professional<br>experience.</h2>
+          <p class="intro">
+            A multidisciplinary career connecting technology, education, leadership,
+            and creative production.
+          </p>
+        </div>
+
+        <div class="timeline">
+
+          <article class="timeline-item reveal">
+            <div class="date">CURRENT</div>
+            <div>
+              <h3>Technology Educator & Director</h3>
+              <div class="role-meta">High School Education • Texas</div>
+              <p>
+                Leads and teaches technology-focused programs while helping students
+                develop practical skills in computer science, digital design, STEM,
+                information technology, visual media, and emerging technologies.
+              </p>
+            </div>
+          </article>
+
+          <article class="timeline-item reveal">
+            <div class="date">EDUCATION</div>
+            <div>
+              <h3>STEM & Technology Education</h3>
+              <div class="role-meta">STEM-certified educator</div>
+              <p>
+                Develops hands-on learning experiences around technology, 3D design,
+                CAD, digital media, programming, and creative problem-solving.
+              </p>
+            </div>
+          </article>
+
+          <article class="timeline-item reveal">
+            <div class="date">TECHNOLOGY</div>
+            <div>
+              <h3>IT & Software Development</h3>
+              <div class="role-meta">Computer Science • Web • Applications</div>
+              <p>
+                Experience with application development, web technologies, databases,
+                Python-based projects, Vue/Quasar development, Firebase, and digital
+                technology workflows.
+              </p>
+            </div>
+          </article>
+
+          <article class="timeline-item reveal">
+            <div class="date">CREATIVE</div>
+            <div>
+              <h3>Creative Production</h3>
+              <div class="role-meta">Photography • Video • Music • Digital Media</div>
+              <p>
+                Works across photography, video production, music production, graphic
+                design, and digital media through creative technology projects and
+                entrepreneurial initiatives.
+              </p>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- EDUCATION -->
+    <section id="education">
+      <div class="container">
+        <div class="section-heading reveal">
+          <div class="section-number">03 / EDUCATION</div>
+          <h2>Education &<br>credentials.</h2>
+        </div>
+
+        <div class="two-col">
+
+          <div>
+            <div class="credential reveal">
+              <strong>Master's Degree in Computer Science</strong>
+              <span>Graduate-level computer science education • Texas</span>
+            </div>
+
+            <div class="credential reveal">
+              <strong>Mechanical Engineering Studies</strong>
+              <span>Engineering studies • Dominica</span>
+            </div>
+
+            <div class="credential reveal">
+              <strong>STEM Certified Educator</strong>
+              <span>STEM.org certified educator</span>
+            </div>
+          </div>
+
+          <div class="panel reveal">
+            <h3>Professional Development</h3>
+            <p>
+              Continuing development across technology education, digital media,
+              computer science, CAD, 3D design, presentation, leadership, and
+              instructional practice.
+            </p>
+
+            <div class="skills">
+              <span class="skill">STEM Education</span>
+              <span class="skill">Computer Science</span>
+              <span class="skill">IT</span>
+              <span class="skill">Digital Media</span>
+              <span class="skill">3D Design</span>
+              <span class="skill">CAD</span>
+              <span class="skill">Instruction</span>
+              <span class="skill">Leadership</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills">
+      <div class="container">
+        <div class="section-heading reveal">
+          <div class="section-number">04 / EXPERTISE</div>
+          <h2>Technology<br>toolbox.</h2>
+        </div>
+
+        <div class="two-col">
+
+          <div class="panel reveal">
+            <h3>Technology & Development</h3>
+            <p>
+              Practical experience across software, web development, databases,
+              programming, and digital workflows.
+            </p>
+
+            <div class="skills">
+              <span class="skill">Python</span>
+              <span class="skill">Pygame</span>
+              <span class="skill">Vue</span>
+              <span class="skill">Quasar</span>
+              <span class="skill">Firebase</span>
+              <span class="skill">WordPress</span>
+              <span class="skill">Web Development</span>
+              <span class="skill">IT</span>
+            </div>
+          </div>
+
+          <div class="panel reveal">
+            <h3>Design & Production</h3>
+            <p>
+              Creative technology skills used for teaching, entrepreneurship,
+              content creation, and digital production.
+            </p>
+
+            <div class="skills">
+              <span class="skill">3D Modeling</span>
+              <span class="skill">3D Printing</span>
+              <span class="skill">AutoCAD</span>
+              <span class="skill">Fusion 360</span>
+              <span class="skill">Tinkercad</span>
+              <span class="skill">Blender</span>
+              <span class="skill">Photography</span>
+              <span class="skill">Video Production</span>
+              <span class="skill">Graphic Design</span>
+              <span class="skill">Music Production</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects">
+      <div class="container">
+        <div class="section-heading reveal">
+          <div class="section-number">05 / PROJECTS</div>
+          <h2>Ideas into<br>experiences.</h2>
+          <p class="intro">
+            Selected areas of creative and technology work. Replace or expand these
+            cards with links to live projects as your portfolio grows.
+          </p>
+        </div>
+
+        <div class="projects">
+
+          <article class="project reveal">
+            <div class="project-icon">◈</div>
+            <h3>3D Print Studio</h3>
+            <p>
+              A hands-on 3D design and printing concept focused on customized
+              products, personalized prints, and technology education.
+            </p>
+          </article>
+
+          <article class="project reveal">
+            <div class="project-icon">⌘</div>
+            <h3>Technology Education</h3>
+            <p>
+              Classroom experiences covering computer science, IT, digital design,
+              visual media, STEM, and practical technology skills.
+            </p>
+          </article>
+
+          <article class="project reveal">
+            <div class="project-icon">✦</div>
+            <h3>KORE Production</h3>
+            <p>
+              Creative production work spanning music, photography, video,
+              branding, and digital experiences.
+            </p>
+          </article>
+
+          <article class="project reveal">
+            <div class="project-icon">△</div>
+            <h3>Application Development</h3>
+            <p>
+              Software and web projects exploring practical applications,
+              user interfaces, databases, and interactive experiences.
+            </p>
+          </article>
+
+          <article class="project reveal">
+            <div class="project-icon">◎</div>
+            <h3>STEM & 3D Design Pathways</h3>
+            <p>
+              Curriculum concepts connecting Tinkercad, CAD, 3D modeling,
+              fabrication, and certification-oriented learning.
+            </p>
+          </article>
+
+          <article class="project reveal">
+            <div class="project-icon">✧</div>
+            <h3>Creative Technology</h3>
+            <p>
+              Combining technology with photography, video, music, drones,
+              digital design, and hands-on experimentation.
+            </p>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- LEADERSHIP -->
+    <section id="leadership">
+      <div class="container">
+        <div class="section-heading reveal">
+          <div class="section-number">06 / LEADERSHIP</div>
+          <h2>Lead. Serve.<br>Develop.</h2>
+        </div>
+
+        <div class="leadership">
+
+          <article class="leadership-card reveal">
+            <div class="number">01</div>
+            <h3>Toastmasters Leadership</h3>
+            <p>
+              Active Toastmasters leader with experience serving in multiple
+              executive roles, including President, Vice President of Education,
+              Vice President of Membership, Public Relations Officer, and
+              Sergeant at Arms.
+            </p>
+          </article>
+
+          <article class="leadership-card reveal">
+            <div class="number">02</div>
+            <h3>Education Leadership</h3>
+            <p>
+              Develops technology learning experiences and supports students as
+              they build technical confidence, creativity, communication skills,
+              and career-ready abilities.
+            </p>
+          </article>
+
+          <article class="leadership-card reveal">
+            <div class="number">03</div>
+            <h3>Entrepreneurship</h3>
+            <p>
+              Explores technology-based business concepts connecting creativity,
+              production, education, and practical services.
+            </p>
+          </article>
+
+          <article class="leadership-card reveal">
+            <div class="number">04</div>
+            <h3>Community & Communication</h3>
+            <p>
+              Uses public speaking, mentoring, technology education, and
+              community involvement to help people grow and connect.
+            </p>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- INTERESTS -->
+    <section>
+      <div class="container">
+        <div class="section-heading reveal">
+          <div class="section-number">07 / BEYOND THE RESUME</div>
+          <h2>Curious by<br>nature.</h2>
+        </div>
+
+        <div class="panel reveal">
+          <p>
+            Technology is only one part of the picture. Kyle's interests include
+            guitar and music production, photography and video, drones, RC cars,
+            3D design and fabrication, and stargazing.
+          </p>
+
+          <div class="skills">
+            <span class="skill">Music</span>
+            <span class="skill">Guitar</span>
+            <span class="skill">Photography</span>
+            <span class="skill">Video</span>
+            <span class="skill">Drones</span>
+            <span class="skill">RC Technology</span>
+            <span class="skill">3D Printing</span>
+            <span class="skill">Stargazing</span>
+            <span class="skill">Travel</span>
+            <span class="skill">Innovation</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="contact">
+      <div class="container">
+        <div class="contact-box reveal">
+          <div class="section-number">LET'S CONNECT</div>
+          <h2>Have an idea worth building?</h2>
+          <p>
+            Whether it's technology, education, STEM, creative production,
+            or a new project, let's connect.
+          </p>
+
+          <!-- Replace the href below with your preferred email or contact URL. -->
+          <a class="button primary" href="mailto:YOUR-EMAIL@example.com">
+            Get in touch
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="container footer-inner">
+      <div>© <span id="year"></span> Kyle Gordon. All rights reserved.</div>
+      <div>Technology • Education • Creativity</div>
+    </div>
+  </footer>
+
+  <script>
+    // Navigation glass effect
+    const nav = document.getElementById("nav");
+
+    window.addEventListener("scroll", () => {
+      nav.classList.toggle("scrolled", window.scrollY > 20);
+    });
+
+    // Reveal sections as they enter the viewport
+    const observer = new IntersectionObserver(
+      entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.12 }
+    );
+
+    document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
+
+    // Current year
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+
+</body>
+</html>
